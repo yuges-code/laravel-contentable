@@ -1,17 +1,18 @@
 {
-    "name": "yuges-code/laravel-package-template",
-    "description": "🚀 Starter template for all Yuges Laravel packages",
+    "name": "yuges-code/laravel-contentable",
+    "description": "📝 Package for easily attaching contents to Laravel eloquent models",
     "keywords": [
         "php",
         "yuges",
         "laravel",
         "package",
-        "template"
+        "template",
+        "contents"
     ],
-    "homepage": "https://yuges-code.github.io/laravel-package-template",
+    "homepage": "https://yuges-code.github.io/laravel-contentable",
     "support": {
-        "source": "https://github.com/yuges-code/laravel-package-template",
-        "issues": "https://github.com/yuges-code/laravel-package-template/issues"
+        "source": "https://github.com/yuges-code/laravel-contentable",
+        "issues": "https://github.com/yuges-code/laravel-contentable/issues"
     },
     "license": "MIT",
     "authors": [
@@ -30,14 +31,14 @@
     },
     "autoload": {
         "psr-4": {
-            "Yuges\\LaravelPackageTemplate\\": "src",
-            "Yuges\\LaravelPackageTemplate\\Database\\Seeders\\": "database/seeders/",
-            "Yuges\\LaravelPackageTemplate\\Database\\Factories\\": "database/factories/"
+            "Yuges\\Contentable\\": "src",
+            "Yuges\\Contentable\\Database\\Seeders\\": "database/seeders/",
+            "Yuges\\Contentable\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Yuges\\Package\\Tests\\": "tests/src"
+            "Yuges\\Contentable\\Tests\\": "tests/src"
         }
     },
     "scripts": {
@@ -46,7 +47,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Yuges\\LaravelPackageTemplate\\Providers\\TemplateServiceProvider"
+                "Yuges\\Contentable\\Providers\\ContentableServiceProvider"
             ]
         }
     },

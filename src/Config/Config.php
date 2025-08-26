@@ -3,7 +3,9 @@
 namespace Yuges\Contentable\Config;
 
 use Yuges\Package\Enums\KeyType;
+use Illuminate\Support\Collection;
 use Yuges\Contentable\Models\Content;
+use Yuges\Contentable\Interfaces\Contentable;
 
 class Config extends \Yuges\Package\Config\Config
 {
@@ -51,5 +53,29 @@ class Config extends \Yuges\Package\Config\Config
     public static function getBlockObserverClass(mixed $default = null): string
     {
         return self::get('models.block.observer', $default);
+    }
+
+    public static function getContentableKeyType(mixed $default = null): KeyType
+    {
+        return self::get('models.contentable.key', $default);
+    }
+
+    public static function getContentableRelationName(mixed $default = null): string
+    {
+        return self::get('models.contentable.relation.name', $default);
+    }
+
+    /** @return Collection<array-key, class-string<Contentable>> */
+    public static function getContentableAllowedClasses(mixed $default = null): Collection
+    {
+        return Collection::make(
+            self::get('models.contentable.allowed.classes', $default)
+        );
+    }
+
+    /** @return class-string<ContentableObserver> */
+    public static function getContentableObserverClass(mixed $default = null): string
+    {
+        return self::get('models.contentable.observer', $default);
     }
 }

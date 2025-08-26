@@ -6,9 +6,9 @@ use Yuges\Package\Data\Package;
 use Yuges\Contentable\Models\Block;
 use Yuges\Contentable\Config\Config;
 use Yuges\Contentable\Models\Content;
-use Yuges\Processable\Observers\StageObserver;
+use Yuges\Contentable\Observers\BlockObserver;
 use Yuges\Contentable\Exceptions\InvalidBlock;
-use Yuges\Processable\Observers\ProcessObserver;
+use Yuges\Contentable\Observers\ContentObserver;
 use Yuges\Contentable\Exceptions\InvalidContent;
 use Yuges\Package\Providers\PackageServiceProvider;
 
@@ -33,10 +33,10 @@ class ContentableServiceProvider extends PackageServiceProvider
             ->hasName($this->name)
             ->hasConfig('contentable')
             ->hasMigrations([
-                '000_create_processes_table',
-                '001_create_process_stages_table',
+                '000_create_contents_table',
+                '001_create_content_blocks_table',
             ])
-            ->hasObserver($block, Config::getBlockObserverClass(StageObserver::class))
-            ->hasObserver($content, Config::getContentObserverClass(ProcessObserver::class));
+            ->hasObserver($block, Config::getBlockObserverClass(BlockObserver::class))
+            ->hasObserver($content, Config::getContentObserverClass(ContentObserver::class));
     }
 }

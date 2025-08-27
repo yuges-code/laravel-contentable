@@ -3,16 +3,19 @@
 namespace Yuges\Contentable\Models;
 
 use Yuges\Contentable\Config\Config;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Yuges\Contentable\Traits\HasBlocks;
+use Yuges\Contentable\Traits\HasContentable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
- * @property Collection<array-key, Block> $blocks
+ * @property ?Carbon $selected_at
  */
 class Content extends \Yuges\Package\Models\Model
 {
-    use HasFactory;
+    use
+        HasBlocks,
+        HasFactory,
+        HasContentable;
 
     protected $table = 'contents';
 
@@ -21,10 +24,5 @@ class Content extends \Yuges\Package\Models\Model
     public function getTable(): string
     {
         return Config::getContentTable() ?? $this->table;
-    }
-
-    public function blocks(): HasMany
-    {
-        return $this->hasMany(Config::getBlockClass(Block::class));
     }
 }

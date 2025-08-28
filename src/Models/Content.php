@@ -2,26 +2,25 @@
 
 namespace Yuges\Contentable\Models;
 
-use Yuges\Contentable\Data\Editor;
 use Yuges\Orderable\Traits\HasOrder;
 use Yuges\Contentable\Config\Config;
+use Yuges\Contentable\Traits\HasEditor;
 use Yuges\Contentable\Traits\HasBlocks;
 use Yuges\Orderable\Options\OrderOptions;
 use Yuges\Orderable\Interfaces\Orderable;
 use Illuminate\Database\Eloquent\Builder;
+use Yuges\Contentable\Traits\HasSelected;
 use Yuges\Contentable\Traits\HasContentable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-/**
- * @property ?Editor $editor
- * @property ?Carbon $selected_at
- */
 class Content extends \Yuges\Package\Models\Model implements Orderable
 {
     use
         HasOrder,
+        HasEditor,
         HasBlocks,
         HasFactory,
+        HasSelected,
         HasContentable;
 
     protected $table = 'contents';
@@ -31,13 +30,6 @@ class Content extends \Yuges\Package\Models\Model implements Orderable
     public function getTable(): string
     {
         return Config::getContentTable() ?? $this->table;
-    }
-
-    protected function casts(): array
-    {
-        return [
-            'editor' => Editor::class,
-        ];
     }
 
     public function orderable(): OrderOptions

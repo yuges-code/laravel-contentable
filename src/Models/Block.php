@@ -3,11 +3,14 @@
 namespace Yuges\Contentable\Models;
 
 use Yuges\Contentable\Config\Config;
+use Yuges\Contentable\Traits\HasBlockType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Block extends \Yuges\Package\Models\Model
 {
-    use HasFactory;
+    use
+        HasFactory,
+        HasBlockType;
 
     protected $table = 'content_blocks';
 

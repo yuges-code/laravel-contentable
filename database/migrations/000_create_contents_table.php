@@ -29,7 +29,7 @@ return new class extends Migration
             );
 
             $table->unsignedInteger('version')->index();
-            $table->string('editor')->nullable();
+            $table->json('editor')->nullable();
 
             $table->timestamp('selected_at')->nullable();
             $table->timestamps();

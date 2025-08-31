@@ -3,9 +3,7 @@
 namespace Yuges\Contentable\Abstracts;
 
 use Yuges\Contentable\Enums\BlockType;
-use Yuges\Contentable\Data\Blocks\Header;
-use Yuges\Contentable\Data\Blocks\ItemList;
-use Yuges\Contentable\Data\Blocks\Paragraph;
+use Yuges\Contentable\Factories\BlockDataFactory;
 use Yuges\Contentable\Interfaces\BlockDataInterface;
 
 abstract class BlockData implements BlockDataInterface
@@ -31,11 +29,7 @@ abstract class BlockData implements BlockDataInterface
 
     public static function fromArrayData(BlockType $type, array $data): BlockDataInterface
     {
-        return match ($type) {
-            BlockType::Paragraph => new Paragraph($data['text'] ?? null),
-            BlockType::Header => new Header($data['level'] ?? null, $data['text'] ?? null),
-            BlockType::List => new ItemList($data['style'] ?? null, $data['items'] ?? null),
-        };
+        return BlockDataFactory::create($type, $data);
     }
 
     public function toJsonData(): string

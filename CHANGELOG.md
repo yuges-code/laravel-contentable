@@ -1,3 +1,7 @@
 # Changelog
 
 All notable changes to laravel-contentable will be documented in this file.
+
+## 1.0.0 - 2025-08-31
+
+**Full Changelog**: https://github.com/yuges-code/laravel-contentable/commits/1.0.0

@@ -1,6 +1,6 @@
 <?php
 
-namespace Yuges\Contentable\Data;
+namespace Yuges\Contentable\Data\Editor;
 
 use Yuges\Contentable\Casts\AsEditor;
 use Illuminate\Contracts\Database\Eloquent\Castable;

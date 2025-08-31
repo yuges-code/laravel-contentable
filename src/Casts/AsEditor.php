@@ -3,8 +3,8 @@
 namespace Yuges\Contentable\Casts;
 
 use InvalidArgumentException;
-use Yuges\Contentable\Data\Editor;
 use Illuminate\Database\Eloquent\Model;
+use Yuges\Contentable\Data\Editor\Editor;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 
 class AsEditor implements CastsAttributes

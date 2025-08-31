@@ -2,8 +2,8 @@
 
 namespace Yuges\Contentable\Traits;
 
-use Yuges\Contentable\Data\Editor;
 use Illuminate\Database\Eloquent\Model;
+use Yuges\Contentable\Data\Editor\Editor;
 
 /**
  * @property ?Editor $editor

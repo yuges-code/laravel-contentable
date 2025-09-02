@@ -2,13 +2,24 @@
 
 namespace Yuges\Contentable\Abstracts;
 
+use Spatie\LaravelData\Data;
 use Yuges\Contentable\Enums\BlockType;
 use Yuges\Contentable\Factories\BlockDataFactory;
+use Spatie\LaravelData\Attributes\PropertyForMorph;
 use Yuges\Contentable\Interfaces\BlockDataInterface;
+use Spatie\LaravelData\Contracts\PropertyMorphableData;
 
-abstract class BlockData implements BlockDataInterface
+abstract class BlockData extends Data implements BlockDataInterface, PropertyMorphableData
 {
-    protected BlockType $type;
+    #[PropertyForMorph]
+    public BlockType $type;
+
+    public static function morph(array $properties): ?string
+    {
+        $type = BlockType::from($properties['type']);
+
+        return BlockDataFactory::getClass($type);
+    }
 
     public function getType(): BlockType
     {

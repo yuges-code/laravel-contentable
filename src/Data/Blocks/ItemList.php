@@ -7,7 +7,7 @@ use Yuges\Contentable\Enums\ListStyle;
 
 class ItemList extends \Yuges\Contentable\Abstracts\BlockData
 {
-    protected BlockType $type = BlockType::List;
+    public BlockType $type = BlockType::List;
 
     public function __construct(
         public ListStyle $style = ListStyle::Unordered,

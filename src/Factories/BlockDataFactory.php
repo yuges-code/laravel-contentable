@@ -20,13 +20,14 @@ class BlockDataFactory
         return new $class(...$data);
     }
 
-    /** @return class-string<BlockDataInterface> */
-    protected static function getClass(BlockType $type): string
+    /** @return ?class-string<BlockDataInterface> */
+    public static function getClass(BlockType $type): ?string
     {
         $class = match ($type) {
             BlockType::List => ItemList::class,
             BlockType::Header => Header::class,
             BlockType::Paragraph => Paragraph::class,
+            default => null
         };
 
         return $class;

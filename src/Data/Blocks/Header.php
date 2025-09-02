@@ -7,7 +7,7 @@ use Yuges\Contentable\Enums\HeaderLevel;
 
 class Header extends \Yuges\Contentable\Abstracts\BlockData
 {
-    protected BlockType $type = BlockType::Header;
+    public BlockType $type = BlockType::Header;
 
     public function __construct(
         public HeaderLevel $level = HeaderLevel::Level3,

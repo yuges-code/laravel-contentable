@@ -30,6 +30,7 @@ return new class extends Migration
 
             $table->unsignedInteger('version')->index();
             $table->json('editor')->nullable();
+            $table->unsignedSmallInteger('duration')->nullable();
 
             $table->timestamp('selected_at')->nullable();
             $table->timestamps();

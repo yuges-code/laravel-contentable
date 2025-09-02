@@ -16,9 +16,7 @@ abstract class BlockData extends Data implements BlockDataInterface, PropertyMor
 
     public static function morph(array $properties): ?string
     {
-        $type = BlockType::from($properties['type']);
-
-        return BlockDataFactory::getClass($type);
+        return BlockDataFactory::getClass($properties['type']);
     }
 
     public function getType(): BlockType

@@ -9,7 +9,7 @@ class Paragraph extends \Yuges\Contentable\Abstracts\BlockData
     public BlockType $type = BlockType::Paragraph;
 
     public function __construct(
-        public ?string $text = null,
+        public ?string $text = '',
     ) {
     }
 

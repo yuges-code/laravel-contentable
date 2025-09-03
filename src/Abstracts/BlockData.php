@@ -36,7 +36,7 @@ abstract class BlockData extends Data implements BlockDataInterface, PropertyMor
         return $this->getData();
     }
 
-    public static function fromArrayData(BlockType $type, array $data): BlockDataInterface
+    public static function fromArrayData(BlockType $type, array $data): ?BlockDataInterface
     {
         return BlockDataFactory::create($type, $data);
     }
@@ -46,7 +46,7 @@ abstract class BlockData extends Data implements BlockDataInterface, PropertyMor
         return json_encode($this->getData());
     }
 
-    public static function fromJsonData(BlockType $type, string $data): BlockDataInterface
+    public static function fromJsonData(BlockType $type, string $data): ?BlockDataInterface
     {
         $data = json_decode($data, true);
 

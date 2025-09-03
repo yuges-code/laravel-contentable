@@ -5,6 +5,7 @@ namespace Yuges\Contentable\Tests;
 use Illuminate\Contracts\Config\Repository;
 use Orchestra\Testbench\Attributes\WithMigration;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Spatie\LaravelData\LaravelDataServiceProvider;
 use Yuges\Contentable\Providers\ContentableServiceProvider;
 
 #[WithMigration]
@@ -23,6 +24,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         tap($app['config'], function (Repository $config) {
             $config->set('contentable', require __DIR__ . '/../../config/contentable.php');
+            $config->set('data', require __DIR__ . '/../../vendor/spatie/laravel-data/config/data.php');
         });
     }
 
@@ -30,6 +32,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     {
         return [
             ContentableServiceProvider::class,
+            LaravelDataServiceProvider::class,
         ];
     }
 

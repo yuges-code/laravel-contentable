@@ -11,7 +11,7 @@ class ItemList extends \Yuges\Contentable\Abstracts\BlockData
 
     public function __construct(
         public ListStyle $style = ListStyle::Unordered,
-        public array $items = [],
+        public ?array $items = [],
     ) {
     }
 

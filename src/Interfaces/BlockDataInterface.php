@@ -15,4 +15,6 @@ interface BlockDataInterface
     public function toArrayData(): array;
 
     public function toJsonData(): string;
+
+    public static function from(mixed ...$payloads): static;
 }

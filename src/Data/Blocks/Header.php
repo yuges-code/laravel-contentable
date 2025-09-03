@@ -11,7 +11,7 @@ class Header extends \Yuges\Contentable\Abstracts\BlockData
 
     public function __construct(
         public HeaderLevel $level = HeaderLevel::Level3,
-        public ?string $text = null,
+        public ?string $text = '',
     ) {
     }
 

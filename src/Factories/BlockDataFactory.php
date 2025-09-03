@@ -11,23 +11,27 @@ use Yuges\Contentable\Interfaces\BlockDataInterface;
 
 class BlockDataFactory
 {
-    public static function create(BlockType $type, array $data): BlockDataInterface
+    public static function create(BlockType $type, array $data): ?BlockDataInterface
     {
         $class = static::getClass($type);
 
+        if (! $class) {
+            return null;
+        }
+
         static::validateBlockData($class);
 
-        return new $class(...$data);
+        return $class::from($data);
     }
 
     /** @return ?class-string<BlockDataInterface> */
-    public static function getClass(BlockType $type): ?string
+    public static function getClass(BlockType $type): string
     {
         $class = match ($type) {
             BlockType::List => ItemList::class,
             BlockType::Header => Header::class,
             BlockType::Paragraph => Paragraph::class,
-            default => null
+            default => null,
         };
 
         return $class;

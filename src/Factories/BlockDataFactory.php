@@ -2,10 +2,8 @@
 
 namespace Yuges\Contentable\Factories;
 
-use Yuges\Contentable\Enums\BlockType;
-use Yuges\Contentable\Data\Blocks\Header;
-use Yuges\Contentable\Data\Blocks\ItemList;
-use Yuges\Contentable\Data\Blocks\Paragraph;
+use Yuges\Contentable\Config\Config;
+use Yuges\Contentable\Interfaces\BlockType;
 use Yuges\Contentable\Exceptions\InvalidBlockData;
 use Yuges\Contentable\Interfaces\BlockDataInterface;
 
@@ -27,14 +25,9 @@ class BlockDataFactory
     /** @return ?class-string<BlockDataInterface> */
     public static function getClass(BlockType $type): string
     {
-        $class = match ($type) {
-            BlockType::List => ItemList::class,
-            BlockType::Header => Header::class,
-            BlockType::Paragraph => Paragraph::class,
-            default => null,
-        };
-
-        return $class;
+        return Config::getBlockData()->first(function(string $data) use ($type) {
+            return new $data()->getType() === $type;
+        });
     }
 
     protected static function validateBlockData(string $class): void

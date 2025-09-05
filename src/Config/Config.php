@@ -5,7 +5,9 @@ namespace Yuges\Contentable\Config;
 use Yuges\Package\Enums\KeyType;
 use Illuminate\Support\Collection;
 use Yuges\Contentable\Models\Content;
+use Yuges\Contentable\Interfaces\BlockType;
 use Yuges\Contentable\Interfaces\Contentable;
+use Yuges\Contentable\Interfaces\BlockDataInterface;
 
 class Config extends \Yuges\Package\Config\Config
 {
@@ -47,6 +49,20 @@ class Config extends \Yuges\Package\Config\Config
     public static function getBlockKeyType(mixed $default = null): KeyType
     {
         return self::get('models.block.key', $default);
+    }
+
+    /** @return class-string<BlockType> */
+    public static function getBlockTypeClass(mixed $default = null): string
+    {
+        return self::get('block.type', $default);
+    }
+
+    /** @return Collection<array-key, class-string<BlockDataInterface>> */
+    public static function getBlockData(mixed $default = null): Collection
+    {
+        return Collection::make(
+            self::get('block.data', $default)
+        );
     }
 
     /** @return class-string<BlockObserver> */

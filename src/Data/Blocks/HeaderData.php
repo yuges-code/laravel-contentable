@@ -5,9 +5,9 @@ namespace Yuges\Contentable\Data\Blocks;
 use Yuges\Contentable\Enums\BlockType;
 use Yuges\Contentable\Enums\HeaderLevel;
 
-class Header extends \Yuges\Contentable\Abstracts\BlockData
+class HeaderData extends \Yuges\Contentable\Abstracts\BlockData
 {
-    public BlockType $type = BlockType::Header;
+    public string $type = BlockType::Header->value;
 
     public function __construct(
         public HeaderLevel $level = HeaderLevel::Level3,

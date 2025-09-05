@@ -5,9 +5,9 @@ namespace Yuges\Contentable\Data\Blocks;
 use Yuges\Contentable\Enums\BlockType;
 use Yuges\Contentable\Enums\ListStyle;
 
-class ItemList extends \Yuges\Contentable\Abstracts\BlockData
+class ListData extends \Yuges\Contentable\Abstracts\BlockData
 {
-    public BlockType $type = BlockType::List;
+    public string $type = BlockType::List->value;
 
     public function __construct(
         public ListStyle $style = ListStyle::Unordered,

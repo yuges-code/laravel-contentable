@@ -6,7 +6,7 @@ use Yuges\Contentable\Tests\TestCase;
 use Yuges\Contentable\Enums\BlockType;
 use Yuges\Contentable\Enums\ListStyle;
 use Yuges\Contentable\Data\Editor\Editor;
-use Yuges\Contentable\Data\Blocks\ItemList;
+use Yuges\Contentable\Data\Blocks\ListData;
 use Yuges\Contentable\Tests\Stubs\Models\Post;
 
 class ContentTest extends TestCase
@@ -36,12 +36,12 @@ class ContentTest extends TestCase
         // ]);
 
         $post->content->blocks()->create([
-            'data' => New ItemList(ListStyle::Unordered, []),
+            'data' => New ListData(ListStyle::Unordered, []),
         ]);
 
         $block = $post->content->blocks->first();
 
-        $this->assertInstanceOf(ItemList::class, $block->data);
+        $this->assertInstanceOf(ListData::class, $block->data);
         $this->assertEquals(ListStyle::Unordered, $block->data->style);
         $this->assertEquals([], $block->data->items);
         $this->assertEquals(BlockType::List, $block->type);

@@ -4,9 +4,9 @@ namespace Yuges\Contentable\Data\Blocks;
 
 use Yuges\Contentable\Enums\BlockType;
 
-class Paragraph extends \Yuges\Contentable\Abstracts\BlockData
+class ParagraphData extends \Yuges\Contentable\Abstracts\BlockData
 {
-    public BlockType $type = BlockType::Paragraph;
+    public string $type = BlockType::Paragraph->value;
 
     public function __construct(
         public ?string $text = '',

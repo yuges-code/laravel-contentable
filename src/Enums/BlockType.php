@@ -2,7 +2,7 @@
 
 namespace Yuges\Contentable\Enums;
 
-enum BlockType: string
+enum BlockType: string implements \Yuges\Contentable\Interfaces\BlockType
 {
     case List = 'list';
     case Header = 'header';

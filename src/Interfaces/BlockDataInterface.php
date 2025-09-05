@@ -2,7 +2,6 @@
 
 namespace Yuges\Contentable\Interfaces;
 
-use Yuges\Contentable\Enums\BlockType;
 
 interface BlockDataInterface
 {

@@ -33,6 +33,15 @@ return [
         ],
     ],
 
+    'block' => [
+        'type' => Yuges\Contentable\Enums\BlockType::class,
+        'data' => [
+            Yuges\Contentable\Data\Blocks\ListData::class,
+            Yuges\Contentable\Data\Blocks\HeaderData::class,
+            Yuges\Contentable\Data\Blocks\ParagraphData::class,
+        ],
+    ],
+
     'actions' => [
         
     ],

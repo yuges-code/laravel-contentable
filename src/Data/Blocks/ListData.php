@@ -10,16 +10,16 @@ class ListData extends \Yuges\Contentable\Abstracts\BlockData
     public string $type = BlockType::List->value;
 
     public function __construct(
-        public ListStyle $style = ListStyle::Unordered,
         public ?array $items = [],
+        public ListStyle $style = ListStyle::Unordered,
     ) {
     }
 
     public function getData(): array
     {
         return [
-            'style' => $this->style,
             'items' => $this->items,
+            'style' => $this->style,
         ];
     }
 }

@@ -36,7 +36,10 @@ class ContentTest extends TestCase
         // ]);
 
         $post->content->blocks()->create([
-            'data' => New ListData(ListStyle::Unordered, []),
+            'data' => New ListData(
+                [],
+                ListStyle::Unordered,
+            ),
         ]);
 
         $block = $post->content->blocks->first();

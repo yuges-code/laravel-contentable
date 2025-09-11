@@ -10,8 +10,8 @@ class HeaderData extends \Yuges\Contentable\Abstracts\BlockData
     public string $type = BlockType::Header->value;
 
     public function __construct(
-        public HeaderLevel $level = HeaderLevel::Level3,
         public ?string $text = '',
+        public HeaderLevel $level = HeaderLevel::Level3,
     ) {
     }
 

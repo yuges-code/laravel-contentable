@@ -2,7 +2,7 @@
 
 namespace Yuges\Contentable\Enums;
 
-enum Alignment: int
+enum Alignment: string
 {
     case Left = 'left';
     case Right = 'right';

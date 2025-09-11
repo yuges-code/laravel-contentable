@@ -23,7 +23,7 @@ abstract class BlockData extends Data implements BlockDataInterface, PropertyMor
     {
         $type = Config::getBlockTypeClass(BlockType::class)::tryFrom($properties['type']);
 
-        return BlockDataFactory::getClass($type);
+        return $type ? BlockDataFactory::getClass($type) : null;
     }
 
     public function getType(): BlockTypeInterface

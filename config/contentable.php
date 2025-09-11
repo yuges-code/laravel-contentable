@@ -37,8 +37,10 @@ return [
         'type' => Yuges\Contentable\Enums\BlockType::class,
         'data' => [
             Yuges\Contentable\Data\Blocks\ListData::class,
+            Yuges\Contentable\Data\Blocks\QuoteData::class,
             Yuges\Contentable\Data\Blocks\HeaderData::class,
             Yuges\Contentable\Data\Blocks\ParagraphData::class,
+            Yuges\Contentable\Data\Blocks\DelimiterData::class,
         ],
     ],
 

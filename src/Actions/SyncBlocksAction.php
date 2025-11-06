@@ -50,7 +50,7 @@ class SyncBlocksAction
 
                 $changes['created'][] = $block->getKey();
             } else {
-                $model = $models->find($block)->first();
+                $model = $models->find($block->getKey());
 
                 $model->setRawAttributes(
                     array_merge(

@@ -37,7 +37,9 @@ class SyncBlocksAction
         $deleted = array_diff($ids['current'], $ids['records']);
 
         if (count($deleted)) {
-            $models->filter(fn (Block $block) => in_array($block->getKey(), $deleted))->each->delete();
+            $models
+                ->filter(fn (Block $block) => in_array($block->getKey(), $deleted))
+                ->each(fn (Block $block) => $block->forceDelete());
 
             $changes['deleted'] = $deleted;
         }

@@ -13,6 +13,9 @@ use Yuges\Contentable\Traits\HasSelected;
 use Yuges\Contentable\Traits\HasContentable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+/**
+ * @property ?int $duration
+ */
 class Content extends \Yuges\Package\Models\Model implements Orderable
 {
     use

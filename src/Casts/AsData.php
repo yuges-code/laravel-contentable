@@ -40,7 +40,7 @@ class AsData implements CastsAttributes
         }
 
         return [
-            'type' => $value->getType(),
+            'type' => $value->getType()->value,
             'data' => $value->toJsonData(),
         ];
     }

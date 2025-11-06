@@ -16,4 +16,6 @@ interface BlockDataInterface
     public function toJsonData(): string;
 
     public static function from(mixed ...$payloads): static;
+
+    public function duration(): float;
 }

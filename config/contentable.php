@@ -45,6 +45,15 @@ return [
     ],
 
     'actions' => [
-        
+        'sync' => Yuges\Contentable\Actions\SyncBlocksAction::class,
+    ],
+
+    'calculators' => [
+        'duration' => [
+            'class' => Yuges\Contentable\Calculators\DurationCalculator::class,
+            'symbol' => [
+                'time' => 0.04,
+            ],
+        ],
     ],
 ];

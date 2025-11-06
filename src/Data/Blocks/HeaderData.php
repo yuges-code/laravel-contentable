@@ -2,6 +2,7 @@
 
 namespace Yuges\Contentable\Data\Blocks;
 
+use Yuges\Contentable\Config\Config;
 use Yuges\Contentable\Enums\BlockType;
 use Yuges\Contentable\Enums\HeaderLevel;
 
@@ -21,5 +22,10 @@ class HeaderData extends \Yuges\Contentable\Abstracts\BlockData
             'text' => $this->text,
             'level' => $this->level,
         ];
+    }
+
+    public function duration(): float
+    {
+        return Config::getDurationCalculatorClass()::duration($this->text);
     }
 }

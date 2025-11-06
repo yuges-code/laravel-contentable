@@ -3,12 +3,12 @@
 namespace Yuges\Contentable\Tests\Stubs\Models;
 
 use Yuges\Package\Models\Model;
-use Yuges\Contentable\Traits\HasContent;
+use Yuges\Contentable\Traits\HasContents;
 use Yuges\Contentable\Interfaces\Contentable;
 
 class Post extends Model implements Contentable
 {
-    use HasContent;
+    use HasContents;
 
     protected $table = 'posts';
 

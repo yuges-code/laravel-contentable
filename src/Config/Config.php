@@ -7,7 +7,9 @@ use Illuminate\Support\Collection;
 use Yuges\Contentable\Models\Content;
 use Yuges\Contentable\Interfaces\BlockType;
 use Yuges\Contentable\Interfaces\Contentable;
+use Yuges\Contentable\Actions\SyncBlocksAction;
 use Yuges\Contentable\Interfaces\BlockDataInterface;
+use Yuges\Contentable\Calculators\DurationCalculator;
 
 class Config extends \Yuges\Package\Config\Config
 {
@@ -93,5 +95,38 @@ class Config extends \Yuges\Package\Config\Config
     public static function getContentableObserverClass(mixed $default = null): string
     {
         return self::get('models.contentable.observer', $default);
+    }
+
+    public static function getSyncBlocksAction(
+        Content $content,
+        mixed $default = null
+    ): SyncBlocksAction
+    {
+        return self::getSyncBlocksActionClass($default)::create($content);
+    }
+
+    /** @return class-string<SyncBlocksAction> */
+    public static function getSyncBlocksActionClass(mixed $default = null): string
+    {
+        return self::get('actions.sync', $default);
+    }
+
+    public static function getDurationCalculator(
+        Content $content,
+        mixed $default = null
+    ): DurationCalculator
+    {
+        return self::getDurationCalculatorClass($default)::create($content);
+    }
+
+    /** @return class-string<DurationCalculator> */
+    public static function getDurationCalculatorClass(mixed $default = null): string
+    {
+        return self::get('calculators.duration.class', $default);
+    }
+
+    public static function getDurationCalculatorSymbolTime(mixed $default = null): float
+    {
+        return self::get('calculators.duration.symbol.time', $default);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Yuges\Contentable\Data\Blocks;
 
+use Yuges\Contentable\Config\Config;
 use Yuges\Contentable\Enums\BlockType;
 
 class ParagraphData extends \Yuges\Contentable\Abstracts\BlockData
@@ -18,5 +19,10 @@ class ParagraphData extends \Yuges\Contentable\Abstracts\BlockData
         return [
             'text' => $this->text,
         ];
+    }
+
+    public function duration(): float
+    {
+        return Config::getDurationCalculatorClass()::duration($this->text);
     }
 }

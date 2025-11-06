@@ -16,6 +16,8 @@ use Yuges\Contentable\Interfaces\BlockType as BlockTypeInterface;
 #[MergeValidationRules]
 abstract class BlockData extends Data implements BlockDataInterface, PropertyMorphableData
 {
+    protected const DURATION = 0.0;
+
     #[PropertyForMorph]
     public string $type;
 
@@ -65,5 +67,10 @@ abstract class BlockData extends Data implements BlockDataInterface, PropertyMor
         return [
             'type' => [Rule::enum(Config::getBlockTypeClass(BlockType::class))],
         ];
+    }
+
+    public function duration(): float
+    {
+        return static::DURATION;
     }
 }

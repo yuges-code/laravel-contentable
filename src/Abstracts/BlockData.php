@@ -2,30 +2,26 @@
 
 namespace Yuges\Contentable\Abstracts;
 
-use Spatie\LaravelData\Data;
-use Illuminate\Validation\Rule;
 use Yuges\Contentable\Config\Config;
 use Yuges\Contentable\Enums\BlockType;
 use Yuges\Contentable\Factories\BlockDataFactory;
-use Spatie\LaravelData\Attributes\PropertyForMorph;
+use Yuges\Contentable\Exceptions\InvalidBlockType;
 use Yuges\Contentable\Interfaces\BlockDataInterface;
-use Spatie\LaravelData\Contracts\PropertyMorphableData;
-use Spatie\LaravelData\Attributes\MergeValidationRules;
 use Yuges\Contentable\Interfaces\BlockType as BlockTypeInterface;
 
-#[MergeValidationRules]
-abstract class BlockData extends Data implements BlockDataInterface, PropertyMorphableData
+abstract class BlockData implements BlockDataInterface
 {
-    protected const DURATION = 0.0;
+    protected const float DURATION = 0.0;
+    protected const ?BlockTypeInterface TYPE = null;
 
-    #[PropertyForMorph]
     public string $type;
 
-    public static function morph(array $properties): ?string
-    {
-        $type = Config::getBlockTypeClass(BlockType::class)::tryFrom($properties['type']);
+    public function __construct() {
+        if (! static::TYPE) {
+            throw InvalidBlockType::notDefined(static::class);
+        }
 
-        return $type ? BlockDataFactory::getClass($type) : null;
+        $this->type = static::TYPE->value;
     }
 
     public function getType(): BlockTypeInterface
@@ -60,13 +56,6 @@ abstract class BlockData extends Data implements BlockDataInterface, PropertyMor
         $data = json_decode($data, true);
 
         return self::fromArrayData($type, $data);
-    }
-
-    public static function rules(): array
-    {
-        return [
-            'type' => [Rule::enum(Config::getBlockTypeClass(BlockType::class))],
-        ];
     }
 
     public function duration(): float

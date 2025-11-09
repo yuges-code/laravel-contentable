@@ -2,6 +2,8 @@
 
 namespace Yuges\Contentable\Factories;
 
+use BackedEnum;
+use ReflectionClass;
 use Yuges\Contentable\Config\Config;
 use Yuges\Contentable\Interfaces\BlockType;
 use Yuges\Contentable\Exceptions\InvalidBlockData;
@@ -19,7 +21,23 @@ class BlockDataFactory
 
         static::validateBlockData($class);
 
-        return $class::from($data);
+        $parameters = new ReflectionClass($class)->getConstructor()->getParameters();
+
+        foreach ($data as $key => $value) {
+            $parameter = array_find($parameters, fn ($parameter) => $parameter->getName() === $key);
+
+            if (! $parameter) {
+                unset($data[$key]);
+            }
+
+            $type = $parameter->getType();
+
+            if (is_subclass_of($type->getName(), BackedEnum::class)) {
+                $data[$key] = $type->getName()::from($value);
+            }
+        }
+
+        return new $class(...$data);
     }
 
     /** @return ?class-string<BlockDataInterface> */

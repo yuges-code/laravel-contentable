@@ -13,9 +13,11 @@ interface BlockDataInterface
 
     public function toArrayData(): array;
 
+    public static function fromArrayData(BlockType $type, array $data): ?BlockDataInterface;
+
     public function toJsonData(): string;
 
-    public static function from(mixed ...$payloads): static;
+    public static function fromJsonData(BlockType $type, string $data): ?BlockDataInterface;
 
     public function duration(): float;
 }

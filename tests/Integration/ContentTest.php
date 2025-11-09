@@ -12,11 +12,14 @@ use Yuges\Contentable\Data\Editor\Editor;
 use Yuges\Contentable\Data\Blocks\ListData;
 use Yuges\Contentable\Data\Blocks\HeaderData;
 use Yuges\Contentable\Tests\Stubs\Models\Post;
+use Yuges\Contentable\Tests\Stubs\Blocks\ParagraphData;
 
 class ContentTest extends TestCase
 {
     public function testContentPost()
     {
+        new ParagraphData('test');
+
         $post = Post::query()->create([
             'title' => 'New post',
         ]);

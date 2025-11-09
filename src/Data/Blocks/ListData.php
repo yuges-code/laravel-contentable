@@ -5,15 +5,17 @@ namespace Yuges\Contentable\Data\Blocks;
 use Yuges\Contentable\Config\Config;
 use Yuges\Contentable\Enums\BlockType;
 use Yuges\Contentable\Enums\ListStyle;
+use Yuges\Contentable\Interfaces\BlockType as BlockTypeInterface;
 
 class ListData extends \Yuges\Contentable\Abstracts\BlockData
 {
-    public string $type = BlockType::List->value;
+    protected const BlockTypeInterface TYPE = BlockType::List;
 
     public function __construct(
         public ?array $items = [],
         public ListStyle $style = ListStyle::Unordered,
     ) {
+        parent::__construct();
     }
 
     public function getData(): array

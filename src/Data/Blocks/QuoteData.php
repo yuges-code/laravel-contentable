@@ -5,16 +5,18 @@ namespace Yuges\Contentable\Data\Blocks;
 use Yuges\Contentable\Config\Config;
 use Yuges\Contentable\Enums\Alignment;
 use Yuges\Contentable\Enums\BlockType;
+use Yuges\Contentable\Interfaces\BlockType as BlockTypeInterface;
 
 class QuoteData extends \Yuges\Contentable\Abstracts\BlockData
 {
-    public string $type = BlockType::Quote->value;
+    protected const BlockTypeInterface TYPE = BlockType::Quote;
 
     public function __construct(
         public ?string $text = '',
         public ?string $caption = '',
         public Alignment $alignment = Alignment::Left,
     ) {
+        parent::__construct();
     }
 
     public function getData(): array

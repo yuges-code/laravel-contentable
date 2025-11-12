@@ -20,6 +20,14 @@ class ContentTest extends TestCase
     {
         new ParagraphData('test');
 
+        $block = new Block([
+            'data' => [
+                'type' => 'list',
+                'items' => ['first', 'second'],
+                'style' => ListStyle::Unordered,
+            ],
+        ]);
+
         $post = Post::query()->create([
             'title' => 'New post',
         ]);

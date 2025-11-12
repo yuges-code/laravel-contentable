@@ -28,12 +28,14 @@ class BlockDataFactory
 
             if (! $parameter) {
                 unset($data[$key]);
+
+                continue;
             }
 
             $type = $parameter->getType();
 
             if (is_subclass_of($type->getName(), BackedEnum::class)) {
-                $data[$key] = $type->getName()::from($value);
+                $data[$key] = $type->getName()::from($value instanceof BackedEnum ? $value->value : $value);
             }
         }
 

@@ -48,6 +48,7 @@ class SyncBlocksAction
             $block->content_id = $this->content->getKey();
 
             if (! in_array($block->getKey(), $ids['current'])) {
+                $block->setAttribute($block->getKeyName(), null);
                 $block->save();
 
                 $changes['created'][] = $block->getKey();

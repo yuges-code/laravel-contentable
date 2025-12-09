@@ -8,8 +8,6 @@ use Yuges\Contentable\Models\Content;
 
 class DurationCalculator
 {
-    CONST CHARACTERS_PER_SECOND = 25;
-
     public function __construct(
         protected Content $content
     ) {

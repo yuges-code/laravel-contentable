@@ -33,9 +33,14 @@ class BlockDataFactory
             }
 
             $type = $parameter->getType();
+            $name = $type->getName();
 
-            if (is_subclass_of($type->getName(), BackedEnum::class)) {
-                $data[$key] = $type->getName()::from($value instanceof BackedEnum ? $value->value : $value);
+            if (class_exists($name)) {
+                if (is_subclass_of($name, BackedEnum::class)) {
+                    $data[$key] = $name::from($value instanceof BackedEnum ? $value->value : $value);
+                } else {
+                    $data[$key] = new $name(...$value);
+                }
             }
         }
 

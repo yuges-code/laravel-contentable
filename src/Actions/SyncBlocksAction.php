@@ -20,6 +20,7 @@ class SyncBlocksAction
 
     /**
      * @param Collection<array-key, Block> $blocks
+     * @return array{created: array, deleted: array, updated: array}
      */
     public function execute(Collection $blocks): array
     {

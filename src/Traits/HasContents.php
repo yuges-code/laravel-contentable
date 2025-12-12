@@ -61,9 +61,15 @@ trait HasContents
     {
         $content ??= $this->content;
 
-        $content->syncBlocks($blocks);
+        $syncs = $content->syncBlocks($blocks);
 
         $content->duration = Config::getDurationCalculator($content)->calculate();
+
+        if (count($syncs['created']) || count($syncs['deleted']) || count($syncs['updated'])) {
+            if ($content->usesTimestamps()) {
+                $content->updateTimestamps();
+            }
+        }
 
         return $content->fill($attributes)->save();
     }

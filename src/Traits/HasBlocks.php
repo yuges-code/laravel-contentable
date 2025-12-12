@@ -22,6 +22,7 @@ trait HasBlocks
 
     /**
      * @param CollectionSupport<array-key, Block> $blocks
+     * @return array{created: array, deleted: array, updated: array}
      */
     public function syncBlocks(CollectionSupport $blocks): array
     {

@@ -2,6 +2,10 @@
 
 All notable changes to laravel-contentable will be documented in this file.
 
+## 1.0.14 - 2025-12-12
+
+**Full Changelog**: https://github.com/yuges-code/laravel-contentable/compare/1.0.13...1.0.14
+
 ## 1.0.13 - 2025-12-09
 
 **Full Changelog**: https://github.com/yuges-code/laravel-contentable/compare/1.0.12...1.0.13
